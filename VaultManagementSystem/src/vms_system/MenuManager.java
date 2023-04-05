@@ -3,6 +3,7 @@ package vms_system;
 import java.util.Scanner;
 
 public class MenuManager {
+	
 	public static void main(String[] args) {
 		int num = 0;
 		Scanner input = new Scanner(System.in);
@@ -24,11 +25,11 @@ public class MenuManager {
 			case 1: 
 				addValuable();
 			case 2:
-
+				deleteValuable();
 			case 3:
-
+				editValuable();
 			case 4:
-
+				viewValuable();
 			case 5:
 				continue;
 			}
@@ -38,9 +39,24 @@ public class MenuManager {
 	
 	public static void addValuable() {
 		Scanner input = new Scanner(System.in);
-		System.out.print("Valuables name:");
+		System.out.print("Valuables name: ");
 		String valuablesName = input.next();
-		System.out.print("Valuables type:");
+		System.out.print("Valuables type: ");
 		String valuablesType = input.next();
+		System.out.print("Storage period: ");
+		int valuablesPeriod = input.nextInt();
+	} //Take data about valuable name, type and how long will be kept
+	
+	public static void deleteValuable(){
+		Scanner input = new Scanner(System.in);
 	}
+	
+	public static void editValuable() {
+		Scanner input = new Scanner(System.in);
+	}
+	
+	public static void viewValuable() {
+		Scanner input = new Scanner(System.in);
+	}
+	
 }
