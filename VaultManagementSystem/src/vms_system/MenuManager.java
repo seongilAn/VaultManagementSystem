@@ -2,7 +2,7 @@ package vms_system;
 
 import java.util.Scanner;
 
-public class MenuManager {
+public class MenuManager { 
 	public static void main(String[] args) {
 		int num = 0;
 		Scanner input = new Scanner(System.in);
@@ -38,7 +38,6 @@ public class MenuManager {
 				continue;
 			}
 		}
-		System.out.println(3);
 	}
 	
 }
