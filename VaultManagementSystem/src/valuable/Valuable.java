@@ -60,7 +60,7 @@ public class Valuable {
     }
 
     public void printinfo(){
-        System.out.println("Id: " + id + "Name: " + name + " Count: " + count + " Period: " + period);
+        System.out.println("Id: " + id + " Name: " + name + " Count: " + count + " Period: " + period);
     }
 
     public void getUserInput(Scanner input){
@@ -72,7 +72,7 @@ public class Valuable {
 		String name = input.next();
         this.setName(name);
         
-        System.out.print("Count of valuables: ");
+        System.out.print("Valuable count: ");
         int count = input.nextInt();
         this.setCount(count);
 
