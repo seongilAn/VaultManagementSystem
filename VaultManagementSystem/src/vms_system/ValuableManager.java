@@ -2,9 +2,11 @@ package vms_system;
 
 import java.util.Scanner;
 
+import valuable.Gold;
 import valuable.Document;
-
+import valuable.Jewerly;
 import valuable.Valuable;
+import valuable.ValuableKind;
 
 import java.util.ArrayList;
 
@@ -22,22 +24,36 @@ public class ValuableManager{
         while (kind != 1 && kind != 2){
             System.out.println("1 for Money");
             System.out.println("2 for Document");
-            System.out.print("Select num for Valuable Kind between 1 and 2: ");
+            System.out.println("3 for Jewerly");
+            System.out.println("4 for Gold");
+            System.out.print("Select num for Valuable Kind between 1 and 4: ");
             kind = input.nextInt();
             if(kind == 1) {
-                valuable = new Valuable();
+                valuable = new Valuable(ValuableKind.MONEY);
                 valuable.getUserInput(input);
                 valuables.add(valuable);
                 break;
             }
             else if(kind == 2) {
-                valuable = new Document();
+                valuable = new Document(ValuableKind.DOCUMENT);
+                valuable.getUserInput(input);
+                valuables.add(valuable);
+                break;
+            }
+            else if(kind == 3) {
+                valuable = new Jewerly(ValuableKind.JEWERLY);
+                valuable.getUserInput(input);
+                valuables.add(valuable);
+                break;
+            }
+            else if(kind == 4) {
+                valuable = new Gold(ValuableKind.GOLD);
                 valuable.getUserInput(input);
                 valuables.add(valuable);
                 break;
             }
             else {
-                System.out.print("Select num for Valuable Kind between 1 and 2: ");
+                System.out.print("Select num for Valuable Kind between 1 and 4: ");
             }
         }
 	} //Take data about valuable name, type and how long will be kept

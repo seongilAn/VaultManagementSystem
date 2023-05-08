@@ -12,7 +12,19 @@ public class Valuable {
     public Valuable(){
     }
 
+    public Valuable(ValuableKind kind){
+        this.kind = kind;
+    }
+
     public Valuable(String name, int count, int period, int id){
+        this.name = name;
+        this.count = count;
+        this.period = period;
+        this.id = id;
+    }
+
+    public Valuable(ValuableKind kind, String name, int count, int period, int id){
+        this.kind = kind;
         this.name = name;
         this.count = count;
         this.period = period;
@@ -58,9 +70,25 @@ public class Valuable {
     public void setPeriod(int period) {
         this.period = period;
     }
-
+    
     public void printinfo(){
-        System.out.println("Id: " + id + " Name: " + name + " Count: " + count + " Period: " + period);
+        String skind = "none";
+        switch(this.kind){
+            case MONEY:
+                skind = "Money";
+                break;
+            case DOCUMENT:
+                skind = "Document";
+                break;
+            case JEWERLY:
+                skind = "Jewerly";
+                break;
+            case GOLD:
+                skind = "Gold";
+                break;
+            default:
+        }
+        System.out.println("Kind: " + skind + " Id: " + id + " Name: " + name + " Count: " + count + " Period: " + period);
     }
 
     public void getUserInput(Scanner input){

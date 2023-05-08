@@ -2,20 +2,20 @@ package valuable;
 
 import java.util.Scanner;
 
-public class Document extends Valuable{
+public class Jewerly extends Valuable{
 
-    protected String documentType;
+    protected String jewerlyType;
 
-    public Document(ValuableKind kind){
+    public Jewerly(ValuableKind kind){
         super(kind);
     }
 
-    public String getDocumentType(){
-        return this.documentType;
+    public String getJewerlyType(){
+        return this.jewerlyType;
     }
 
-    public void setDocumentType(String documentType){
-        this.documentType = documentType;
+    public void setJewerlyType(String jewerlyType){
+        this.jewerlyType = jewerlyType;
     }
 
     public void getUserInput(Scanner input){
@@ -27,9 +27,9 @@ public class Document extends Valuable{
 		String name = input.next();
         this.setName(name);
 
-        System.out.print("Document Type: ");
-        String documentType = input.next();
-        this.setDocumentType(documentType);
+        System.out.print("Jewerly Type: ");
+        String jewerlyType = input.next();
+        this.setJewerlyType(jewerlyType);
 
         char answer = 'x';
         while(answer != 'y' && answer != 'Y' && answer != 'n' && answer != 'N'){
@@ -55,6 +55,23 @@ public class Document extends Valuable{
     }
 
     public void printinfo(){
-        System.out.println("Kind: " + kind + "Id: " + id + " Name: " + name + " Document Type: " + documentType +" Count: " + count + " Period: " + period);
+        String skind = "none";
+        switch(this.kind){
+            case MONEY:
+                skind = "Money";
+                break;
+            case DOCUMENT:
+                skind = "Document";
+                break;
+            case JEWERLY:
+                skind = "Jewerly";
+                break;
+            case GOLD:
+                skind = "Gold";
+                break;
+            default:
+        }
+        System.out.println("Kind: " + skind + " Id: " + id + " Name: " + name + " Jewerly Type: " + jewerlyType + " Count: " + count + " Period: " + period);
     }
+
 }
