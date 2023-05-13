@@ -17,7 +17,7 @@ public class MenuManager {
 			System.out.println("5. Exit");
 			//Printing Menu about management system
 
-			System.out.println("Select one number between 1-5: ");
+			System.out.print("Select one number between 1-5: ");
 			num = input.nextInt();
 			//Take number from user
 
