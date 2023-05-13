@@ -2,16 +2,17 @@ package vms_system;
 
 import java.util.Scanner;
 
+import valuable.Money;
 import valuable.Gold;
 import valuable.Document;
 import valuable.Jewerly;
-import valuable.Valuable;
 import valuable.ValuableKind;
+import valuable.ValuableInput;
 
 import java.util.ArrayList;
 
 public class ValuableManager{
-    ArrayList<Valuable> valuables = new ArrayList<Valuable>(); 
+    ArrayList<ValuableInput> valuables = new ArrayList<ValuableInput>(); 
     Scanner input;
     ValuableManager(Scanner input){
         this.input = input;
@@ -20,7 +21,7 @@ public class ValuableManager{
 
 	public void addValuable() {
         int kind = 0;
-        Valuable valuable;
+        ValuableInput valuableInput;
         while (kind != 1 && kind != 2){
             System.out.println("1 for Money");
             System.out.println("2 for Document");
@@ -29,27 +30,27 @@ public class ValuableManager{
             System.out.print("Select num for Valuable Kind between 1 and 4: ");
             kind = input.nextInt();
             if(kind == 1) {
-                valuable = new Valuable(ValuableKind.MONEY);
-                valuable.getUserInput(input);
-                valuables.add(valuable);
+                valuableInput = new Money(ValuableKind.MONEY);
+                valuableInput.getUserInput(input);
+                valuables.add(valuableInput);
                 break;
             }
             else if(kind == 2) {
-                valuable = new Document(ValuableKind.DOCUMENT);
-                valuable.getUserInput(input);
-                valuables.add(valuable);
+                valuableInput = new Document(ValuableKind.DOCUMENT);
+                valuableInput.getUserInput(input);
+                valuables.add(valuableInput);
                 break;
             }
             else if(kind == 3) {
-                valuable = new Jewerly(ValuableKind.JEWERLY);
-                valuable.getUserInput(input);
-                valuables.add(valuable);
+                valuableInput = new Jewerly(ValuableKind.JEWERLY);
+                valuableInput.getUserInput(input);
+                valuables.add(valuableInput);
                 break;
             }
             else if(kind == 4) {
-                valuable = new Gold(ValuableKind.GOLD);
-                valuable.getUserInput(input);
-                valuables.add(valuable);
+                valuableInput = new Gold(ValuableKind.GOLD);
+                valuableInput.getUserInput(input);
+                valuables.add(valuableInput);
                 break;
             }
             else {
@@ -83,8 +84,8 @@ public class ValuableManager{
         System.out.print("Valuable Id: ");
         int valuableid = input.nextInt();
         for(int i = 0; i < valuables.size(); i++){
-            Valuable valuable = valuables.get(i);
-            if(valuable.getId() == valuableid){
+            ValuableInput valuableInput = valuables.get(i);
+            if(valuableInput.getId() == valuableid){
                 int num = 0;
                 while (num != 5) { //Repeatedly print menu
                     System.out.println("****Valuable Editing menu****");
@@ -100,22 +101,22 @@ public class ValuableManager{
                         case 1:
                             System.out.print("Valuable Name: ");
                             String name = input.next();
-                            valuable.setName(name);
+                            valuableInput.setName(name);
                             break;
                         case 2:
                             System.out.print("Valuable Id: ");
                             int id = input.nextInt();
-                            valuable.setId(id);
+                            valuableInput.setId(id);
                             break;
                         case 3:
                             System.out.print("Valuable Count: ");
                             int count = input.nextInt();
-                            valuable.setCount(count);
+                            valuableInput.setCount(count);
                             break;
                         case 4:
                             System.out.print("Valuable Period");
                             int period = input.nextInt();
-                            valuable.setPeriod(period);
+                            valuableInput.setPeriod(period);
                             break;
                         case 5:
                             continue;

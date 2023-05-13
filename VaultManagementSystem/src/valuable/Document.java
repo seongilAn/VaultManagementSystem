@@ -2,7 +2,7 @@ package valuable;
 
 import java.util.Scanner;
 
-public class Document extends Valuable{
+public class Document extends Valuable implements ValuableInput{
 
     protected String documentType;
 
@@ -55,6 +55,22 @@ public class Document extends Valuable{
     }
 
     public void printinfo(){
-        System.out.println("Kind: " + kind + "Id: " + id + " Name: " + name + " Document Type: " + documentType +" Count: " + count + " Period: " + period);
+        String skind = "none";
+        switch(this.kind){
+            case MONEY:
+                skind = "Money";
+                break;
+            case DOCUMENT:
+                skind = "Document";
+                break;
+            case JEWERLY:
+                skind = "Jewerly";
+                break;
+            case GOLD:
+                skind = "Gold";
+                break;
+            default:
+        }
+        System.out.println("Kind: " + skind + " Id: " + id + " Name: " + name + " Document Type: " + documentType + " Count: " + count + " Period: " + period);
     }
 }

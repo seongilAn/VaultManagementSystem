@@ -1,8 +1,6 @@
 package valuable;
 
-import java.util.Scanner;
-
-public class Valuable {
+public abstract class Valuable {
     protected ValuableKind kind = ValuableKind.MONEY;
     protected String name;
     protected int id;
@@ -71,42 +69,6 @@ public class Valuable {
         this.period = period;
     }
     
-    public void printinfo(){
-        String skind = "none";
-        switch(this.kind){
-            case MONEY:
-                skind = "Money";
-                break;
-            case DOCUMENT:
-                skind = "Document";
-                break;
-            case JEWERLY:
-                skind = "Jewerly";
-                break;
-            case GOLD:
-                skind = "Gold";
-                break;
-            default:
-        }
-        System.out.println("Kind: " + skind + " Id: " + id + " Name: " + name + " Count: " + count + " Period: " + period);
-    }
-
-    public void getUserInput(Scanner input){
-        System.out.print("Id: ");
-        int id = input.nextInt();
-        this.setId(id);
-
-		System.out.print("Valuables name: ");
-		String name = input.next();
-        this.setName(name);
-        
-        System.out.print("Valuable count: ");
-        int count = input.nextInt();
-        this.setCount(count);
-
-		System.out.print("Storage period: ");
-		int period = input.nextInt();
-        this.setPeriod(period);
-    }
+    public abstract void printinfo();
 
 }

@@ -2,20 +2,20 @@ package valuable;
 
 import java.util.Scanner;
 
-public class Jewerly extends Valuable implements ValuableInput{
+public class Money extends Valuable implements ValuableInput{
 
-    protected String jewerlyType;
+    protected String currency;
 
-    public Jewerly(ValuableKind kind){
+    public String getCurrency() {
+        return this.currency;
+    }
+
+    public void setCurrency(String currency) {
+        this.currency = currency;
+    };
+
+    public Money(ValuableKind kind){
         super(kind);
-    }
-
-    public String getJewerlyType(){
-        return this.jewerlyType;
-    }
-
-    public void setJewerlyType(String jewerlyType){
-        this.jewerlyType = jewerlyType;
     }
 
     public void getUserInput(Scanner input){
@@ -26,10 +26,6 @@ public class Jewerly extends Valuable implements ValuableInput{
 		System.out.print("Valuables name: ");
 		String name = input.next();
         this.setName(name);
-
-        System.out.print("Jewerly Type: ");
-        String jewerlyType = input.next();
-        this.setJewerlyType(jewerlyType);
 
         char answer = 'x';
         while(answer != 'y' && answer != 'Y' && answer != 'n' && answer != 'N'){
@@ -71,7 +67,7 @@ public class Jewerly extends Valuable implements ValuableInput{
                 break;
             default:
         }
-        System.out.println("Kind: " + skind + " Id: " + id + " Name: " + name + " Jewerly Type: " + jewerlyType + " Count: " + count + " Period: " + period);
+        System.out.println("Kind: " + skind + " Id: " + id + " Name: " + name + " Currency: " + currency + " Count: " + count + " Period: " + period);
     }
 
 }

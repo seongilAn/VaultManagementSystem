@@ -2,7 +2,7 @@ package valuable;
 
 import java.util.Scanner;
 
-public class Gold extends Valuable{
+public class Gold extends Valuable implements ValuableInput{
 
     protected int karat;
 
