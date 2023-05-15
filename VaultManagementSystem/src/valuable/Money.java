@@ -27,6 +27,10 @@ public class Money extends Valuable implements ValuableInput{
 		String name = input.next();
         this.setName(name);
 
+        System.out.print("Money currency: ");
+        String currency = input.next();
+        this.setCurrency(currency);
+
         char answer = 'x';
         while(answer != 'y' && answer != 'Y' && answer != 'n' && answer != 'N'){
             System.out.print("Do you have a storage period? (Y/N)");

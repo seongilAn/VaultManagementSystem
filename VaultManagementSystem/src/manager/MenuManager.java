@@ -1,4 +1,4 @@
-package vms_system;
+package manager;
 
 import java.util.Scanner;
 
