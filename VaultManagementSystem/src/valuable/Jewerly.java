@@ -2,59 +2,47 @@ package valuable;
 
 import java.util.Scanner;
 
-public class Jewerly extends Valuable implements ValuableInput{
+public class Jewerly extends Valuable{
 
-    protected String jewerlyType;
+    protected String typeName;
 
     public Jewerly(ValuableKind kind){
         super(kind);
     }
 
-    public String getJewerlyType(){
-        return this.jewerlyType;
+    public String gettypeName(){
+        return this.typeName;
     }
 
-    public void setJewerlyType(String jewerlyType){
-        this.jewerlyType = jewerlyType;
+    public void setTypeName(String typeName){
+        this.typeName = typeName;
+    }
+
+    public void setJewerlyTypeName(ValuableInput vauable, Scanner input){
+        System.out.print("Jewerly Type: ");
+        String typeName = input.next();
+        this.setTypeName(typeName);
     }
 
     public void getUserInput(Scanner input){
-        System.out.print("Id: ");
-        int id = input.nextInt();
-        this.setId(id);
 
-		System.out.print("Valuables name: ");
-		String name = input.next();
-        this.setName(name);
-
-        System.out.print("Jewerly Type: ");
-        String jewerlyType = input.next();
-        this.setJewerlyType(jewerlyType);
-
-        char answer = 'x';
-        while(answer != 'y' && answer != 'Y' && answer != 'n' && answer != 'N'){
-            System.out.print("Do you have a storage period? (Y/N)");
-            answer = input.next().charAt(0);
-            if(answer == 'y' || answer == 'Y'){
-                System.out.print("Storage period: ");
-                int period = input.nextInt();
-                this.setPeriod(period);
-            }
-            else if(answer == 'n' || answer == 'N'){
-                this.setPeriod(-1);
-            }
-            else {
-                
-            }
-        }
+        setValuableId(input);
         
-        System.out.print("Valuable count: ");
-        int count = input.nextInt();
-        this.setCount(count);
+        setValuableName(input);
 
+        setJewerlyTypeName(this, input);
+
+        setValuablePeriod(input);
+        
+        setValuableCount(input);
     }
 
     public void printinfo(){
+        String skind = getKindString();
+        System.out.println("Kind: " + skind + " Id: " + id + " Name: " + name + " Jewerly Type: " + typeName + " Count: " + count + " Period: " + period);
+    }
+
+    public String getKindString(){
         String skind = "none";
         switch(this.kind){
             case MONEY:
@@ -71,7 +59,8 @@ public class Jewerly extends Valuable implements ValuableInput{
                 break;
             default:
         }
-        System.out.println("Kind: " + skind + " Id: " + id + " Name: " + name + " Jewerly Type: " + jewerlyType + " Count: " + count + " Period: " + period);
+
+        return skind;
     }
 
 }

@@ -62,6 +62,11 @@ public class ValuableManager{
 	public void deleteValuable(){
         System.out.print("Valuable Id: ");
         int valuableid = input.nextInt();
+        int index = findIndex(valuableid);
+        removeFromValuables(index, valuableid);
+	}
+
+    public int findIndex(int valuableid){
         int index = -1;
         for(int i = 0; i < valuables.size(); i++){
             if(valuables.get(i).getId() == valuableid){
@@ -69,7 +74,10 @@ public class ValuableManager{
                 break;
             }
         }
+        return index;
+    }
 
+    public void removeFromValuables(int index, int valuableid){
         if(index >= 0){
             valuables.remove(index);
             System.out.println("The valuable" + valuableid + "is deleted");
@@ -78,45 +86,30 @@ public class ValuableManager{
             System.out.println("Valuable has not been registered");
             return;
         }
-	}
+    }
 	
 	public void editValuable() {
         System.out.print("Valuable Id: ");
         int valuableid = input.nextInt();
         for(int i = 0; i < valuables.size(); i++){
-            ValuableInput valuableInput = valuables.get(i);
-            if(valuableInput.getId() == valuableid){
+            ValuableInput valuable = valuables.get(i);
+            if(valuable.getId() == valuableid){
                 int num = 0;
                 while (num != 5) { //Repeatedly print menu
-                    System.out.println("****Valuable Editing menu****");
-                    System.out.println("1. Edit Name");
-                    System.out.println("2. Edit Id");
-                    System.out.println("3. Edit Count");
-                    System.out.println("4. Edit Period");
-                    System.out.println("5. Exit");
-
-                    System.out.println("Select one number between 1-6: ");
+                    showEditMenu();
                     num = input.nextInt();
                     switch(num){
                         case 1:
-                            System.out.print("Valuable Name: ");
-                            String name = input.next();
-                            valuableInput.setName(name);
+                            valuable.setValuableName(input);
                             break;
                         case 2:
-                            System.out.print("Valuable Id: ");
-                            int id = input.nextInt();
-                            valuableInput.setId(id);
+                            valuable.setValuableId(input);
                             break;
                         case 3:
-                            System.out.print("Valuable Count: ");
-                            int count = input.nextInt();
-                            valuableInput.setCount(count);
+                            valuable.setValuableCount(input);
                             break;
                         case 4:
-                            System.out.print("Valuable Period");
-                            int period = input.nextInt();
-                            valuableInput.setPeriod(period);
+                            valuable.setValuablePeriod(input);
                             break;
                         case 5:
                             continue;
@@ -127,6 +120,8 @@ public class ValuableManager{
         } // for
 
     }	
+
+
 	
 	public void viewValuables() {
         System.out.println("# of saved valuables: " + valuables.size());
@@ -134,4 +129,14 @@ public class ValuableManager{
             valuables.get(i).printinfo();
         }
 	}
+
+    public void showEditMenu(){
+        System.out.println("****Valuable Editing menu****");
+        System.out.println("1. Edit Name");
+        System.out.println("2. Edit Id");
+        System.out.println("3. Edit Count");
+        System.out.println("4. Edit Period");
+        System.out.println("5. Exit");
+        System.out.println("Select one number between 1-6: ");
+    }
 }

@@ -1,6 +1,8 @@
 package valuable;
 
-public abstract class Valuable {
+import java.util.Scanner;
+
+public abstract class Valuable implements ValuableInput{
     protected ValuableKind kind = ValuableKind.MONEY;
     protected String name;
     protected int id;
@@ -70,5 +72,42 @@ public abstract class Valuable {
     }
     
     public abstract void printinfo();
+
+    public void setValuableName(Scanner input){
+        System.out.print("Valuable Name: ");
+        String name = input.next();
+        this.setName(name);
+    }
+    
+    public void setValuableId(Scanner input){
+        System.out.print("Valuable Id: ");
+        int id = input.nextInt();
+        this.setId(id);
+    }
+    
+    public void setValuableCount(Scanner input){
+        System.out.print("Valuable Count: ");
+        int count = input.nextInt();
+        this.setCount(count);
+    }
+
+    public void setValuablePeriod(Scanner input){
+        char answer = 'x';
+        while(answer != 'y' && answer != 'Y' && answer != 'n' && answer != 'N'){
+            System.out.print("Do you have a storage period? (Y/N)");
+            answer = input.next().charAt(0);
+            if(answer == 'y' || answer == 'Y'){
+                System.out.print("Storage period: ");
+                int period = input.nextInt();
+                this.setPeriod(period);
+            }
+            else if(answer == 'n' || answer == 'N'){
+                this.setPeriod(-1);
+            }
+            else {
+                
+            }
+        }
+    }
 
 }

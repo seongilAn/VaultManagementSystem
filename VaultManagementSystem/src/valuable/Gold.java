@@ -2,7 +2,7 @@ package valuable;
 
 import java.util.Scanner;
 
-public class Gold extends Valuable implements ValuableInput{
+public class Gold extends Valuable{
 
     protected int karat;
 
@@ -18,43 +18,32 @@ public class Gold extends Valuable implements ValuableInput{
         this.karat = karat;
     }
 
-    public void getUserInput(Scanner input){
-        System.out.print("Id: ");
-        int id = input.nextInt();
-        this.setId(id);
-
-		System.out.print("Valuables name: ");
-		String name = input.next();
-        this.setName(name);
-
+    public void setGoldKarat(ValuableInput valuable, Scanner input){
         System.out.print("Karat: ");
         int karat = input.nextInt();
         this.setKarat(karat);
+    }
 
-        char answer = 'x';
-        while(answer != 'y' && answer != 'Y' && answer != 'n' && answer != 'N'){
-            System.out.print("Do you have a storage period? (Y/N)");
-            answer = input.next().charAt(0);
-            if(answer == 'y' || answer == 'Y'){
-                System.out.print("Storage period: ");
-                int period = input.nextInt();
-                this.setPeriod(period);
-            }
-            else if(answer == 'n' || answer == 'N'){
-                this.setPeriod(-1);
-            }
-            else {
-                
-            }
-        }
-        
-        System.out.print("Valuable count: ");
-        int count = input.nextInt();
-        this.setCount(count);
+    public void getUserInput(Scanner input){
+
+        setValuableId(input);
+
+        setValuableName(input);
+
+        setGoldKarat(this, input);
+
+        setValuablePeriod(input);
+
+        setValuableCount(input);
 
     }
 
     public void printinfo(){
+        String skind = getKindString();
+        System.out.println("Kind: " + skind + " Id: " + id + " Name: " + name + " Karat: " + karat + "K " + " Count: " + count + " Period: " + period);
+    }
+
+    public String getKindString(){
         String skind = "none";
         switch(this.kind){
             case MONEY:
@@ -71,6 +60,7 @@ public class Gold extends Valuable implements ValuableInput{
                 break;
             default:
         }
-        System.out.println("Kind: " + skind + " Id: " + id + " Name: " + name + " Karat: " + karat + "K " + " Count: " + count + " Period: " + period);
+
+        return skind;
     }
 }

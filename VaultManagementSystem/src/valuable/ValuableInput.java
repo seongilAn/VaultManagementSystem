@@ -17,4 +17,13 @@ public interface ValuableInput {
     public void printinfo();
 
     public void getUserInput(Scanner input);    
+
+    public void setValuableName(Scanner input);
+
+    public void setValuableId(Scanner input);
+
+    public void setValuableCount(Scanner input);
+
+    public void setValuablePeriod(Scanner input);
+
 }
