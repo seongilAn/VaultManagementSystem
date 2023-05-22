@@ -2,6 +2,8 @@ package valuable;
 
 import java.util.Scanner;
 
+import exception.CountFormatException;
+
 public interface ValuableInput {
 
     public int getId();
@@ -10,7 +12,7 @@ public interface ValuableInput {
 
     public void setId(int id);
 
-    public void setCount(int count);
+    public void setCount(int count) throws CountFormatException;
 
     public void setPeriod(int period);
 

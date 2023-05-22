@@ -2,6 +2,8 @@ package valuable;
 
 import java.util.Scanner;
 
+import exception.CountFormatException;
+
 public abstract class Valuable implements ValuableInput{
     protected ValuableKind kind = ValuableKind.MONEY;
     protected String name;
@@ -59,7 +61,10 @@ public abstract class Valuable implements ValuableInput{
         return count;
     }
 
-    public void setCount(int count) {
+    public void setCount(int count) throws CountFormatException {
+    	if(count < 1 || count > 10000) {
+    		throw new CountFormatException();
+    	}
         this.count = count;
     }
 
@@ -86,9 +91,16 @@ public abstract class Valuable implements ValuableInput{
     }
     
     public void setValuableCount(Scanner input){
-        System.out.print("Valuable Count: ");
-        int count = input.nextInt();
-        this.setCount(count);
+    	int count = -1;
+    	while(count < 1 || count > 10000) {
+	        System.out.print("Valuable Count: ");
+	    	count = input.nextInt();
+	        try {
+				this.setCount(count);
+			} catch (CountFormatException e) {
+				System.out.println("Incorrect Valuable Count. Please put the count between 1 ~ 10000");
+			}
+    	}
     }
 
     public void setValuablePeriod(Scanner input){
