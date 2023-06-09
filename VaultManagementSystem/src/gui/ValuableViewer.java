@@ -1,12 +1,18 @@
 package gui;
 
-import javax.swing.JFrame;
+import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
-public class ValuableViewer extends JFrame{
-    public ValuableViewer() {
+public class ValuableViewer extends JPanel{
+
+    WindowFrame frame;
+
+    public ValuableViewer(WindowFrame frame) {
+        
+        this.frame = frame;
+
         DefaultTableModel model = new DefaultTableModel();
         model.addColumn("Id");
         model.addColumn("Name");
@@ -17,8 +23,5 @@ public class ValuableViewer extends JFrame{
         JScrollPane sp = new JScrollPane(table);
 
         this.add(sp);
-        this.setSize(300, 300);
-        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        this.setVisible(true);
     }
 }
