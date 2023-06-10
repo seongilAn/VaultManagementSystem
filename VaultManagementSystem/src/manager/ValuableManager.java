@@ -3,6 +3,7 @@ package manager;
 import java.util.Scanner; 
 
 import valuable.Money;
+import valuable.Valuable;
 import valuable.Gold;
 import valuable.Document;
 import valuable.Jewerly;
@@ -23,9 +24,12 @@ public class ValuableManager implements Serializable{
         this.input = input;
 
     }
+    public void setScanner(Scanner input) {
+    	this.input = input;
+    }
 
 	public void addValuable() {
-        int kind = 0;
+        int kind =	 0;
         ValuableInput valuableInput;
         while (kind<1 || kind>4){
         	try {
@@ -152,4 +156,16 @@ public class ValuableManager implements Serializable{
         System.out.println("5. Exit");
         System.out.println("Select one number between 1-6: ");
     }
+    
+    public int size() {
+    	return valuables.size();
+    }
+    public ValuableInput get(int index) {
+    	return (Valuable) valuables.get(index);
+    }
+   
+    
 } 
+
+
+	

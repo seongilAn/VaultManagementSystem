@@ -3,17 +3,20 @@ package gui;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
-public class WindowFrame extends JFrame {
+import manager.ValuableManager;
 
-    MenuSelection menuSelection;
+public class WindowFrame extends JFrame {
+	
+	ValuableManager valuableManager;
+	MenuSelection menuSelection;
     ValuableAdder valuableAdder;
     ValuableViewer valuableViewer;
-
-    public WindowFrame() {
+ 
+    public WindowFrame(ValuableManager valuableManager) {
         this.menuSelection = new MenuSelection(this);
         this.valuableAdder = new ValuableAdder(this);
-        this.valuableViewer = new ValuableViewer(this) ;
-
+        this.valuableManager = valuableManager;
+        this.valuableViewer = new ValuableViewer(this, this.valuableManager) ;
         this.setSize(500, 300);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
