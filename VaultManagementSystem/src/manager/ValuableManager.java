@@ -24,8 +24,19 @@ public class ValuableManager implements Serializable{
         this.input = input;
 
     }
+    
+    
     public void setScanner(Scanner input) {
-    	this.input = input;
+    	this.input = input; 
+    }
+    public void addValuable(String id, String name, String count, String period){
+    	ValuableInput valuableInput = new Money(ValuableKind.MONEY);
+        valuableInput.getUserInput(input);
+        valuables.add(valuableInput);
+    }
+    
+    public void addValuable(ValuableInput valuableInput){
+        valuables.add(valuableInput);
     }
 
 	public void addValuable() {

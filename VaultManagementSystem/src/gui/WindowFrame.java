@@ -14,8 +14,8 @@ public class WindowFrame extends JFrame {
  
     public WindowFrame(ValuableManager valuableManager) {
         this.menuSelection = new MenuSelection(this);
-        this.valuableAdder = new ValuableAdder(this);
         this.valuableManager = valuableManager;
+        this.valuableAdder = new ValuableAdder(this, this.valuableManager );
         this.valuableViewer = new ValuableViewer(this, this.valuableManager) ;
         this.setSize(500, 300);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

@@ -27,6 +27,7 @@ public class MenuManager {
 		WindowFrame frame = new WindowFrame(valuableManager);
 		selectMenu(input, valuableManager);
 		putObject(valuableManager, "ValuableManager.ser");
+			
 	}
 	public static void selectMenu(Scanner input, ValuableManager valuableManager ) {
 		int num=-1;

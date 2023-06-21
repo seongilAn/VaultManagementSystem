@@ -6,13 +6,19 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.SpringLayout;
 
+import listeners.ValuableAdderCancelListener;
+import listeners.ValuableAdderListener;
+import manager.ValuableManager;
+
 public class ValuableAdder extends JPanel{
 
-    WindowFrame frame;
+    WindowFrame frame;  
+    ValuableManager valuableManager;
 
-    public ValuableAdder(WindowFrame frame) {
+    public ValuableAdder(WindowFrame frame , ValuableManager valuableManager) {
         
         this.frame = frame;
+        this.valuableManager = valuableManager;
 
         JPanel panel = new JPanel();
         panel.setLayout(new SpringLayout());
@@ -26,6 +32,8 @@ public class ValuableAdder extends JPanel{
         JLabel labelName = new JLabel("Name: ", JLabel.TRAILING);
         JTextField fieldName = new JTextField(10);
         labelName.setLabelFor(fieldName);
+        
+       
         panel.add(labelName);
         panel.add(fieldName);
 
@@ -35,14 +43,19 @@ public class ValuableAdder extends JPanel{
         panel.add(labelCount);
         panel.add(fieldCount);
 
-        JLabel labelPeriod = new JLabel("Name: ", JLabel.TRAILING);
+        JLabel labelPeriod = new JLabel("Period: ", JLabel.TRAILING);
         JTextField fieldPeriod = new JTextField(10);
         labelPeriod.setLabelFor(fieldPeriod);
         panel.add(labelPeriod);
-        panel.add(fieldPeriod);
-
-        panel.add(new JButton("Save"));
-        panel.add(new JButton("Cancel"));
+        panel.add(fieldPeriod); 
+       
+        JButton saveButton = new JButton("save");
+        saveButton.addActionListener(new ValuableAdderListener(fieldID,fieldName,fieldCount,fieldPeriod,valuableManager));
+        
+        JButton cancelButton = new JButton("cancel");
+        cancelButton.addActionListener(new ValuableAdderCancelListener(frame));
+        panel.add(saveButton);
+        panel.add(cancelButton);
 
         SpringUtilities.makeCompactGrid(panel, 5, 2, 6, 6, 6, 6);
 
